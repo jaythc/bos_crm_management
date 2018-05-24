@@ -18,13 +18,11 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
-	
 	@Override
 	public List<Customer> findNoAssociatedCustomers() {
 		return customerRepository.findByFixedAreaIdIsNull();
 	}
 	
-
 	@Override
 	public List<Customer> findHasAssociatedCustomers(String fixedAreaId) {
 		return customerRepository.findByFixedAreaId(fixedAreaId);
@@ -58,10 +56,19 @@ public class CustomerServiceImpl implements CustomerService {
 		customerRepository.updateType(telepo);
 	}
 
-
 	@Override
 	public Customer findByTelephone(String telepo) {
 		return customerRepository.findByTelephone(telepo);
+	}
+
+	@Override
+	public Customer login(String telephone, String password) {
+		return customerRepository.findByTelephoneAndPassword(telephone,password);
+	}
+
+	@Override
+	public String findFixedAreaIdByAddress(String address) {
+		return customerRepository.findFixedAreaIdByAddress(address);
 	}
 
 	

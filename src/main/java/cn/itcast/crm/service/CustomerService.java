@@ -13,14 +13,28 @@ import javax.ws.rs.QueryParam;
 
 import cn.itcast.crm.domain.Customer;
 
-public interface CustomerService {	
+public interface CustomerService {
+	
+	//  根据客户地址 , 获取定区编号
+	@Path("/customer/findFixedAreaIdByAddress")
+	@GET
+	@Produces({"application/xml","application/json"})
+	public String findFixedAreaIdByAddress(@QueryParam("address") String address);
+	
+	
+	// 前台用户登陆的接口方法
+	@Path("/customer/login")
+	@GET
+	@Produces({"application/xml","application/json"})
+	public Customer login(@QueryParam("telephone") String telephone,
+			@QueryParam("password") String password);
+	
 
 	//保存客户信息
 	@Path("/savecustomer")
 	@POST
 	@Consumes({"application/xml","application/json"})
 	public void regist(Customer customer);
-	
 	
 	//查询所有未关联客户列表
 	@Path("/noassociatedcustomers")

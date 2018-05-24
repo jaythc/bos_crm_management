@@ -14,6 +14,8 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
+	
+	<!--  webService的配置 ,  工程名之后, 紧接着就是 web.xml 的路径    -->
 	<servlet>
 		<servlet-name>CXF</servlet-name>
 		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
